@@ -33,7 +33,7 @@ function App() {
         filePath: `fovus-files/${fileInput.name}`,
       });
 
-      let response = await fetch(process.env.REACT_APP_API, {
+      let response = await fetch('https://0y7hdyv91e.execute-api.us-east-2.amazonaws.com/prod/v1/file/', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -43,6 +43,7 @@ function App() {
       if (response.ok) {
         // If the response status is in the range 200-299
         // Parse the JSON body of the response
+        console.log("response: "+response.body);
         let data = await response.json();
         let uploadUrl = data.url;
         try {
